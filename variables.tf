@@ -140,8 +140,25 @@ variable "maintainance_action" {
   default     = "LIVE_MIGRATE"
 }
 
-variable "ocpus" {
-  description = "OCPU assigned to pool"
+variable "instance_shape_config_memory_in_gbs" {
+  description = "Memory assigned to computes in pool"
+  default     = ""
+}
+
+variable "instance_shape_config_ocpus" {
+  description = "OCPU assigned computes in pool"
+}
+
+variable "is_flex_shape" {
+  description = "Boolean that describes if the shape is flex or not"
+  default     = false
+  type        = bool
+}
+
+variable "is_load_balancer_required" {
+  description = "Boolean that determines if load balancer attachment is required or not"
+  default     = false
+  type        = bool
 }
 
 variable "fault_domain_list" {
@@ -210,14 +227,17 @@ variable "network_subnet_name" {
 /***********TEMP VARS FOR INTEGRATION WITH LBAAS - DO NOT PORT***************/
 variable "lbaas_bes_name" {
   description = "LBaaS Back end o name"
+  default = ""
 }
 
 variable "load_balancer_ocid" {
   description = "LBaaS OCID"
+  default = ""
 }
 
 variable "lbaas_bes_checkport" {
   description = "Port where BES Healthcheck and where Load balancer listener is configured"
+  default = ""
 }
 
 /***********TEMP VARS FOR INTEGRATION WITH LBAAS - DO NOT PORT***************/

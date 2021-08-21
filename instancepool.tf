@@ -23,8 +23,19 @@ resource "oci_core_instance_configuration" "InstanceConfiguration" {
         network_type = var.network_type
       }
 
-      shape_config {
-        ocpus = var.ocpus
+      dynamic "shape_config" {
+        for_each = var.is_flex_shape ? [1] : []
+        content {
+          memory_in_gbs = var.instance_shape_config_memory_in_gbs
+          ocpus         = var.instance_shape_config_ocpus
+        }
+      }
+
+      dynamic "shape_config" {
+        for_each = var.is_flex_shape ? [] : [1]
+        content {
+          ocpus         = var.instance_shape_config_ocpus
+        }
       }
 
       create_vnic_details {
@@ -62,14 +73,15 @@ resource "oci_core_instance_pool" "InstancePool" {
     }
   }
 
-  load_balancers {
-    backend_set_name = var.lbaas_bes_name
-    load_balancer_id = var.load_balancer_ocid
-    port             = var.lbaas_bes_checkport
-    vnic_selection   = "primaryvnic"
+  dynamic "load_balancers" {
+    for_each = var.is_load_balancer_required ? [1] : []
+    content {
+      backend_set_name = var.lbaas_bes_name
+      load_balancer_id = var.load_balancer_ocid
+      port             = var.lbaas_bes_checkport
+      vnic_selection   = "primaryvnic"
+    }
   }
-
-
 }
 
 
