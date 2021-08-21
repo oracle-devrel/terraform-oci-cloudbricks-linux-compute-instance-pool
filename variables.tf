@@ -21,30 +21,6 @@ variable "fingerprint" {
   description = "API Key Fingerprint for user_ocid derived from public API Key imported in OCI User config"
 }
 
-variable "ssh_public_is_path" {
-  description = "Describes if SSH Public Key is located on file or inside code"
-  default     = false
-}
-
-variable "ssh_private_is_path" {
-  description = "Describes if SSH Private Key is located on file or inside code"
-  default     = false
-}
-
-variable "ssh_public_key" {
-  description = "Defines SSH Public Key to be used in order to remotely connect to compute instance"
-  type        = string
-}
-variable "private_key_path" {
-  description = "Private Key Absolute path location where terraform is executed"
-
-}
-
-variable "ssh_private_key" {
-  description = "Private key to log into machine"
-
-}
-
 /********** Provider Variables NOT OVERLOADABLE **********/
 
 
@@ -80,9 +56,10 @@ variable "primary_vnic_display_name" {
 variable "assign_public_ip_flag" {
   description = "Defines either machine will have or not a Public IP assigned. All Pvt networks this variable must be false"
   default     = false
+  type        = bool
 }
 
-variable "instance_image_ocid" {
+variable "base_compute_image_ocid" {
   description = "Defines the OCID for the OS image to be used on artifact creation. Extract OCID from: https://docs.cloud.oracle.com/iaas/images/ or designated custom image OCID created by packer"
 }
 
@@ -100,11 +77,13 @@ variable "bkp_policy_boot_volume" {
 variable "is_compute_in_hub_dmz01" {
   description = "Defines if the compute is going to be created in Hub DMZ01 Subnet"
   default     = false
+  type        = bool
 }
 
 variable "is_compute_in_hub_svc01" {
   description = "Defines if the compute is going to be created in the Hub SharedSvc01 Subnet"
   default     = false
+  type        = bool
 }
 
 variable "linux_compute_instance_compartment_name" {
@@ -185,35 +164,87 @@ variable "compute_availability_domain_map" {
 /********** AutoScaling Config Variables **********/
 variable "autoscaling_config_display_name" {
   description = "Configuration name for Autoscaling"
-
 }
 
 variable "is_autoscaling_enabled" {
   description = "Describes if autoscaling is enabled or not for this pool"
-  default     = true
+  default     = false
 }
 
-variable "is_scalein_enabled" {
+variable "schedule_is_scalein_enabled" {
   description = "Describes if scalein is enabled or not for this pool"
-  default     = true
+  default     = false
+  type        = bool
+}
+
+variable "schedule_is_scaleout_enabled" {
+  description = "Describes if scaleout is enabled or not for this pool"
+  default     = false
+  type        = bool
+}
+
+variable "schedule_scaleout_instance_number" {
+  description = "Describes the number for instances during scale out for this pool"
+  default     = ""
+}
+
+variable "autoscaling_is_schedule" {
+  description = "Boolean that desribe if autoscaling is schedule based or not"
+  default     = false
+  type        = bool
 }
 
 variable "schedule_scalein_time_window" {
   description = "Describes time window scaling in UTC and cron format"
-}
-
-variable "is_scaleout_enabled" {
-  description = "Describes if scaleout is enabled or not for this pool"
-  default     = true
-}
-
-variable "scaleout_instance_number" {
-  description = "Describes the number for instances during scale out for this pool"
+  default     = ""
 }
 
 variable "schedule_scaleout_time_window" {
   description = "Describes time window scaling out UTC and cron format"
+  default     = ""
 }
+
+variable "max_autoscale_instance_number" {
+  description = "Maximum number of instance that can be scaled to when using threshold scaling configurations"
+  default     = ""
+}
+
+variable "min_autoscale_instance_number" {
+  description = "Minimum number of instance that can be scaled to when using threshold scaling configurations"
+  default     = ""
+}
+
+variable "autoscaling_is_cpu" {
+  description = "Boolean that desribe if autoscaling is cpu based or not"
+  default     = false
+  type        = bool
+}
+
+variable "autoscaling_is_memory" {
+  description = "Boolean that desribe if autoscaling is memory based or not"
+  default     = false
+  type        = bool
+}
+variable "threshold_scale_out" {
+  description = "Threshold of CPU or memory utilization to cause a scale out"
+  default     = ""
+}
+
+variable "threshold_scale_in" {
+  description = "Threshold of CPU or memory utilization to cause a scale in"
+  default     = ""
+}
+
+variable "scaleout_step" {
+  description = "Number of instances to scale by in threshold confiogurations"
+  default     = ""
+}
+
+variable "scalein_step" {
+  description = "Number of instances to scale by in threshold confiogurations"
+  default     = ""
+}
+
 
 /********** AutoScaling Config Variables **********/
 
@@ -226,18 +257,18 @@ variable "network_subnet_name" {
 
 /***********TEMP VARS FOR INTEGRATION WITH LBAAS - DO NOT PORT***************/
 variable "lbaas_bes_name" {
-  description = "LBaaS Back end o name"
-  default = ""
+  description = "LBaaS Back end set name"
+  default     = ""
 }
 
 variable "load_balancer_ocid" {
   description = "LBaaS OCID"
-  default = ""
+  default     = ""
 }
 
 variable "lbaas_bes_checkport" {
   description = "Port where BES Healthcheck and where Load balancer listener is configured"
-  default = ""
+  default     = ""
 }
 
 /***********TEMP VARS FOR INTEGRATION WITH LBAAS - DO NOT PORT***************/
