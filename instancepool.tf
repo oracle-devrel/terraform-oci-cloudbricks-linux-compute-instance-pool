@@ -46,7 +46,7 @@ resource "oci_core_instance_configuration" "InstanceConfiguration" {
 
 
 resource "oci_core_instance_pool" "InstancePool" {
-  depends_on = [oci_core_instance_configuration.InstanceConfiguration]
+  depends_on                = [oci_core_instance_configuration.InstanceConfiguration]
   compartment_id            = local.compartment_id
   instance_configuration_id = oci_core_instance_configuration.InstanceConfiguration.id
   size                      = var.pool_size
@@ -57,7 +57,7 @@ resource "oci_core_instance_pool" "InstancePool" {
     for_each = var.compute_availability_domain_map
     content {
       availability_domain = placement_configurations.value
-      fault_domains       = var.fault_domain_list      
+      fault_domains       = var.fault_domain_list
       primary_subnet_id   = local.subnet_ocid
     }
   }
