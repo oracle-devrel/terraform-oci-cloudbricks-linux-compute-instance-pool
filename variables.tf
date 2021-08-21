@@ -121,11 +121,6 @@ variable "linux_compute_network_compartment_name" {
   description = "Defines the compartment where the Network is currently located"
 }
 
-variable "base_instance_ocid" {
-  description = "OCID for base instance"
-
-}
-
 variable "launch_mode" {
   description = "Launch mode in which the image will be executed"
   default     = "NATIVE"
