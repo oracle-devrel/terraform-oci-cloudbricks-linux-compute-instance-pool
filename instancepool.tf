@@ -1,8 +1,12 @@
-/* compute.tf 
-Author: DALQUINT - denny.alquinta@oracle.com
-Purpose: The following script defines the creation of compute instances based on an image available within the region
-Copyright (c) 2020, Oracle and/or its affiliates. All rights reserved. 
-*/
+# Copyright (c) 2021 Oracle and/or its affiliates.
+# All rights reserved. The Universal Permissive License (UPL), Version 1.0 as shown at http://oss.oracle.com/licenses/upl
+# instancepool.tf
+#
+# Purpose: The following script defines the creation of an instance pool using an instance configuration, 
+#          creates an auto scaling configuration and attaches optional load balancer.
+# Registry: https://registry.terraform.io/providers/hashicorp/oci/latest/docs/resources/core_instance_configuration
+#           https://registry.terraform.io/providers/hashicorp/oci/latest/docs/resources/core_instance_pool
+#           https://registry.terraform.io/providers/hashicorp/oci/latest/docs/resources/autoscaling_auto_scaling_configuration
 
 
 resource "oci_core_instance_configuration" "InstanceConfiguration" {
@@ -28,13 +32,6 @@ resource "oci_core_instance_configuration" "InstanceConfiguration" {
         content {
           memory_in_gbs = var.instance_shape_config_memory_in_gbs
           ocpus         = var.instance_shape_config_ocpus
-        }
-      }
-
-      dynamic "shape_config" {
-        for_each = var.is_flex_shape ? [] : [1]
-        content {
-          ocpus = var.instance_shape_config_ocpus
         }
       }
 
