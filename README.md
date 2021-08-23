@@ -29,6 +29,7 @@ region       = "re-region-1"
 tenancy_ocid = "ocid1.tenancy.oc1..aaaaaaaaabcdefg"
 user_ocid    = "ocid1.user.oc1..aaaaaaaahijklm"
 fingerprint  = "fo:oo:ba:ar:ba:ar"
+private_key_path = "/absolute/path/to/api/key/your_api_key.pem"
 ######################################## PROVIDER SPECIFIC VARIABLES ######################################
 ######################################## ARTIFACT SPECIFIC VARIABLES ######################################
 compute_availability_domain_map = { "ad1" : "aBCD:RE-REGION-1-AD-1" }
@@ -79,6 +80,7 @@ region       = "re-region-1"
 tenancy_ocid = "ocid1.tenancy.oc1..aaaaaaaaabcdefg"
 user_ocid    = "ocid1.user.oc1..aaaaaaaahijklm"
 fingerprint  = "fo:oo:ba:ar:ba:ar"
+private_key_path = "/absolute/path/to/api/key/your_api_key.pem"
 ######################################## PROVIDER SPECIFIC VARIABLES ######################################
 ######################################## ARTIFACT SPECIFIC VARIABLES ######################################
 compute_availability_domain_map = { "ad1" : "aBCD:RE-REGION-1-AD-1" }
@@ -125,6 +127,7 @@ region       = "re-region-1"
 tenancy_ocid = "ocid1.tenancy.oc1..aaaaaaaaabcdefg"
 user_ocid    = "ocid1.user.oc1..aaaaaaaahijklm"
 fingerprint  = "fo:oo:ba:ar:ba:ar"
+private_key_path = "/absolute/path/to/api/key/your_api_key.pem"
 ######################################## PROVIDER SPECIFIC VARIABLES ######################################
 ######################################## ARTIFACT SPECIFIC VARIABLES ######################################
 compute_availability_domain_map = { "ad1" : "aBCD:RE-REGION-1-AD-1" }
@@ -176,6 +179,7 @@ region       = "re-region-1"
 tenancy_ocid = "ocid1.tenancy.oc1..aaaaaaaaabcdefg"
 user_ocid    = "ocid1.user.oc1..aaaaaaaahijklm"
 fingerprint  = "fo:oo:ba:ar:ba:ar"
+private_key_path = "/absolute/path/to/api/key/your_api_key.pem"
 ######################################## PROVIDER SPECIFIC VARIABLES ######################################
 ######################################## ARTIFACT SPECIFIC VARIABLES ######################################
 compute_availability_domain_map = { "ad1" : "aBCD:RE-REGION-1-AD-1" }
@@ -223,6 +227,7 @@ region       = "re-region-1"
 tenancy_ocid = "ocid1.tenancy.oc1..aaaaaaaaabcdefg"
 user_ocid    = "ocid1.user.oc1..aaaaaaaahijklm"
 fingerprint  = "fo:oo:ba:ar:ba:ar"
+private_key_path = "/absolute/path/to/api/key/your_api_key.pem"
 ######################################## PROVIDER SPECIFIC VARIABLES ######################################
 ######################################## ARTIFACT SPECIFIC VARIABLES ######################################
 compute_availability_domain_map = { "ad1" : "aBCD:RE-REGION-1-AD-1" }
@@ -274,6 +279,7 @@ region       = "re-region-1"
 tenancy_ocid = "ocid1.tenancy.oc1..aaaaaaaaabcdefg"
 user_ocid    = "ocid1.user.oc1..aaaaaaaahijklm"
 fingerprint  = "fo:oo:ba:ar:ba:ar"
+private_key_path = "/absolute/path/to/api/key/your_api_key.pem"
 ######################################## PROVIDER SPECIFIC VARIABLES ######################################
 ######################################## ARTIFACT SPECIFIC VARIABLES ######################################
 compute_availability_domain_map = { "ad1" : "aBCD:RE-REGION-1-AD-1" }
@@ -323,6 +329,7 @@ region       = "re-region-1"
 tenancy_ocid = "ocid1.tenancy.oc1..aaaaaaaaabcdefg"
 user_ocid    = "ocid1.user.oc1..aaaaaaaahijklm"
 fingerprint  = "fo:oo:ba:ar:ba:ar"
+private_key_path = "/absolute/path/to/api/key/your_api_key.pem"
 ######################################## PROVIDER SPECIFIC VARIABLES ######################################
 ######################################## ARTIFACT SPECIFIC VARIABLES ######################################
 compute_availability_domain_map = { "ad1" : "aBCD:RE-REGION-1-AD-1" }
@@ -370,6 +377,7 @@ region       = "re-region-1"
 tenancy_ocid = "ocid1.tenancy.oc1..aaaaaaaaabcdefg"
 user_ocid    = "ocid1.user.oc1..aaaaaaaahijklm"
 fingerprint  = "fo:oo:ba:ar:ba:ar"
+private_key_path = "/absolute/path/to/api/key/your_api_key.pem"
 ######################################## PROVIDER SPECIFIC VARIABLES ######################################
 ######################################## ARTIFACT SPECIFIC VARIABLES ######################################
 compute_availability_domain_map = { "ad1" : "aBCD:RE-REGION-1-AD-1" }
@@ -413,6 +421,7 @@ region       = "re-region-1"
 tenancy_ocid = "ocid1.tenancy.oc1..aaaaaaaaabcdefg"
 user_ocid    = "ocid1.user.oc1..aaaaaaaahijklm"
 fingerprint  = "fo:oo:ba:ar:ba:ar"
+private_key_path = "/absolute/path/to/api/key/your_api_key.pem"
 ######################################## PROVIDER SPECIFIC VARIABLES ######################################
 ######################################## ARTIFACT SPECIFIC VARIABLES ######################################
 compute_availability_domain_map = { "ad1" : "aBCD:RE-REGION-1-AD-1" }
@@ -461,6 +470,7 @@ region       = "re-region-1"
 tenancy_ocid = "ocid1.tenancy.oc1..aaaaaaaaabcdefg"
 user_ocid    = "ocid1.user.oc1..aaaaaaaahijklm"
 fingerprint  = "fo:oo:ba:ar:ba:ar"
+private_key_path = "/absolute/path/to/api/key/your_api_key.pem"
 ######################################## PROVIDER SPECIFIC VARIABLES ######################################
 ######################################## ARTIFACT SPECIFIC VARIABLES ######################################
 compute_availability_domain_map = { "ad1" : "aBCD:RE-REGION-1-AD-1" }
@@ -505,6 +515,7 @@ region       = "re-region-1"
 tenancy_ocid = "ocid1.tenancy.oc1..aaaaaaaaabcdefg"
 user_ocid    = "ocid1.user.oc1..aaaaaaaahijklm"
 fingerprint  = "fo:oo:ba:ar:ba:ar"
+private_key_path = "/absolute/path/to/api/key/your_api_key.pem"
 ######################################## PROVIDER SPECIFIC VARIABLES ######################################
 ######################################## ARTIFACT SPECIFIC VARIABLES ######################################
 compute_availability_domain_map = { "ad1" : "aBCD:RE-REGION-1-AD-1" }
@@ -553,6 +564,7 @@ region       = "re-region-1"
 tenancy_ocid = "ocid1.tenancy.oc1..aaaaaaaaabcdefg"
 user_ocid    = "ocid1.user.oc1..aaaaaaaahijklm"
 fingerprint  = "fo:oo:ba:ar:ba:ar"
+private_key_path = "/absolute/path/to/api/key/your_api_key.pem"
 ######################################## PROVIDER SPECIFIC VARIABLES ######################################
 ######################################## ARTIFACT SPECIFIC VARIABLES ######################################
 compute_availability_domain_map = { "ad1" : "aBCD:RE-REGION-1-AD-1" }
@@ -638,6 +650,7 @@ provider "oci" {
 ```
 
 ## Variable documentation
+
 ## Requirements
 
 No requirements.
@@ -711,6 +724,7 @@ No modules.
 | <a name="input_pool_size"></a> [pool\_size](#input\_pool\_size) | Amount of instances to create | `any` | n/a | yes |
 | <a name="input_primary_vnic_display_name"></a> [primary\_vnic\_display\_name](#input\_primary\_vnic\_display\_name) | Defines the Primary VNIC Display Name | `string` | `"primaryvnic"` | no |
 | <a name="input_private_ip"></a> [private\_ip](#input\_private\_ip) | Describes the private IP required for machine | `any` | `null` | no |
+| <a name="input_private_key_path"></a> [private\_key\_path](#input\_private\_key\_path) | Private Key Absolute path location where terraform is executed | `any` | n/a | yes |
 | <a name="input_region"></a> [region](#input\_region) | Target region where artifacts are going to be created | `any` | n/a | yes |
 | <a name="input_scalein_step"></a> [scalein\_step](#input\_scalein\_step) | Number of instances to scale by in threshold confiogurations | `string` | `""` | no |
 | <a name="input_scaleout_step"></a> [scaleout\_step](#input\_scaleout\_step) | Number of instances to scale by in threshold confiogurations | `string` | `""` | no |
