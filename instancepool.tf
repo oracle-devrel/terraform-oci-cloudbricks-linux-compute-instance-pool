@@ -87,7 +87,7 @@ resource "oci_autoscaling_auto_scaling_configuration" "ScheduleAutoScalingConfig
     type = "instancePool"
   }
   compartment_id       = local.compartment_id
-  cool_down_in_seconds = "300"
+  cool_down_in_seconds = var.autoscaling_cooldown
   display_name         = var.autoscaling_config_display_name
   is_enabled           = var.is_autoscaling_enabled
 
@@ -127,7 +127,7 @@ resource "oci_autoscaling_auto_scaling_configuration" "CPUAutoScalingConfig" {
     type = "instancePool"
   }
   compartment_id       = local.compartment_id
-  cool_down_in_seconds = "300"
+  cool_down_in_seconds = var.autoscaling_cooldown
   display_name         = var.autoscaling_config_display_name
   is_enabled           = var.is_autoscaling_enabled
 
@@ -179,7 +179,7 @@ resource "oci_autoscaling_auto_scaling_configuration" "MemoryAutoScalingConfig" 
     type = "instancePool"
   }
   compartment_id       = local.compartment_id
-  cool_down_in_seconds = "300"
+  cool_down_in_seconds = var.autoscaling_cooldown
   display_name         = var.autoscaling_config_display_name
   is_enabled           = var.is_autoscaling_enabled
 

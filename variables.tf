@@ -175,6 +175,11 @@ variable "is_autoscaling_enabled" {
   type        = bool
 }
 
+variable "autoscaling_cooldown" {
+  description = "Sets the cooldown between autoscaling operations"
+  default = 300
+}
+
 variable "schedule_is_scalein_enabled" {
   description = "Describes if scalein is enabled or not for this pool"
   default     = false
@@ -259,7 +264,7 @@ variable "network_subnet_name" {
 }
 /********** Datasource related variables **********/
 
-/***********TEMP VARS FOR INTEGRATION WITH LBAAS - DO NOT PORT***************/
+/*********** LBaaS related variables ***************/
 variable "lbaas_bes_name" {
   description = "LBaaS Back end set name"
   default     = ""
@@ -275,6 +280,6 @@ variable "lbaas_bes_checkport" {
   default     = ""
 }
 
-/***********TEMP VARS FOR INTEGRATION WITH LBAAS - DO NOT PORT***************/
+/*********** LBaaS related variables ***************/
 
 /********** Brick Variables **********/
