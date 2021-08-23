@@ -1,8 +1,9 @@
-/* datasources.tf 
-Author: DALQUINT - denny.alquinta@oracle.com
-Purpose: The following script defines the lookup logic used in code to obtain pre-created resources in tenancy.
-Copyright (c) 2017, 2020, Oracle and/or its affiliates. All rights reserved. 
-*/
+# Copyright (c) 2021 Oracle and/or its affiliates.
+# All rights reserved. The Universal Permissive License (UPL), Version 1.0 as shown at http://oss.oracle.com/licenses/upl
+# datasource.tf
+#
+# Purpose: The following script defines the lookup logic used in code to obtain pre-created or JIT-created resources in tenancy.
+
 
 /********** Compartment and CF Accessors **********/
 data "oci_identity_compartments" "COMPARTMENTS" {
@@ -79,17 +80,15 @@ data "oci_core_instance_configurations" "INSTANCECONFIGURATIONS" {
 
 
 locals {
-  /********** Subnet OCID local accessors **********/
+  # Subnet OCID local accessor
   subnet_ocid = length(data.oci_core_subnets.SUBNET.subnets) > 0 ? data.oci_core_subnets.SUBNET.subnets[0].id : null
 
-  /********** Compartment OCID Local Accessor **********/
+  # Compartment OCID local accessors
   compartment_id    = var.linux_compute_instance_compartment_id != "" ? var.linux_compute_instance_compartment_id : lookup(data.oci_identity_compartments.COMPARTMENTS.compartments[0], "id")
   nw_compartment_id = lookup(data.oci_identity_compartments.NWCOMPARTMENTS.compartments[0], "id")
-  /********** VCN OCID Local Accessor **********/
+  # VCN OCID local accessor
   vcn_id = lookup(data.oci_core_vcns.VCN.virtual_networks[0], "id")
 
   # Backup policies retrieval by tfvars volume-specifc values 
-
   backup_policy_bootvolume_disk_id = data.oci_core_volume_backup_policies.BACKUPPOLICYBOOTVOL.volume_backup_policies[0].id
-
 }

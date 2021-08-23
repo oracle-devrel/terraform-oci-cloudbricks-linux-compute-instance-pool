@@ -1,8 +1,9 @@
-/* variables.tf 
-Author: DALQUINT - denny.alquinta@oracle.com
-Purpose: The following script declares all variables used in this backend repository
-Copyright (c) 2020, Oracle and/or its affiliates. All rights reserved. 
-*/
+# Copyright (c) 2021 Oracle and/or its affiliates.
+# All rights reserved. The Universal Permissive License (UPL), Version 1.0 as shown at http://oss.oracle.com/licenses/upl
+# variables.tf 
+#
+# Purpose: The following file declares all variables used in this backend repository
+
 
 /********** Provider Variables NOT OVERLOADABLE **********/
 variable "region" {
@@ -23,6 +24,7 @@ variable "fingerprint" {
 
 /********** Provider Variables NOT OVERLOADABLE **********/
 
+/********** Brick Variables **********/
 
 /********** Instance Pool Variables **********/
 variable "vcn_display_name" {
@@ -126,6 +128,7 @@ variable "instance_shape_config_memory_in_gbs" {
 
 variable "instance_shape_config_ocpus" {
   description = "OCPU assigned computes in pool"
+  default     = ""
 }
 
 variable "is_flex_shape" {
@@ -169,6 +172,7 @@ variable "autoscaling_config_display_name" {
 variable "is_autoscaling_enabled" {
   description = "Describes if autoscaling is enabled or not for this pool"
   default     = false
+  type        = bool
 }
 
 variable "schedule_is_scalein_enabled" {
@@ -272,3 +276,5 @@ variable "lbaas_bes_checkport" {
 }
 
 /***********TEMP VARS FOR INTEGRATION WITH LBAAS - DO NOT PORT***************/
+
+/********** Brick Variables **********/

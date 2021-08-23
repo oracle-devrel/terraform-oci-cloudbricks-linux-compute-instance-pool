@@ -1,8 +1,8 @@
-/* output.tf 
-Author: DALQUINT - denny.alquinta@oracle.com
-Purpose: The following script defines the output for Compute located on private network
-Copyright (c) 2017, 2020, Oracle and/or its affiliates. All rights reserved. 
-*/
+# Copyright (c) 2021 Oracle and/or its affiliates.
+# All rights reserved. The Universal Permissive License (UPL), Version 1.0 as shown at http://oss.oracle.com/licenses/upl
+# output.tf
+#
+# Purpose: The following file defines the output for the linux_compute_instance_pool brick
 
 output "instance_configuration" {
   description = "Instance Configuration"
@@ -23,8 +23,3 @@ output "instance_pool_computes" {
 output "instance_pool_computes_instances" {
   value = data.oci_core_instance_configurations.INSTANCECONFIGURATIONS.instance_configurations
 }
-
-
-
-
-
