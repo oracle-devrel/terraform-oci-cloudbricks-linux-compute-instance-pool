@@ -6,7 +6,9 @@
 The following brick allows you to create a linux compute instance pool, attach a load balancer to it and create an autoscaling configuration of any kind.
 
 ## Reference Architecture
-MISSING
+The following is the reference architecture associated to this brick
+
+![Reference Architecture](./images/Bricks_Architectures-linux_instance_pool.jpg)
 
 ### Prerequisites
 - Pre-baked Artifact and Network Compartments
@@ -54,6 +56,7 @@ instance_configuration_display_name = "My_Config_Name"
 
 autoscaling_config_display_name = "My_Autoscaling_Config_Name"
 is_autoscaling_enabled          = true
+autoscaling_cooldown            = 300
 
 autoscaling_is_schedule           = true
 schedule_is_scalein_enabled       = true
@@ -99,6 +102,7 @@ instance_configuration_display_name = "My_Config_Name"
 
 autoscaling_config_display_name = "My_Autoscaling_Config_Name"
 is_autoscaling_enabled          = true
+autoscaling_cooldown            = 300
 
 autoscaling_is_schedule           = true
 schedule_is_scalein_enabled       = true
@@ -148,6 +152,7 @@ instance_configuration_display_name = "My_Config_Name"
 
 autoscaling_config_display_name = "My_Autoscaling_Config_Name"
 is_autoscaling_enabled          = true
+autoscaling_cooldown            = 300
 
 autoscaling_is_cpu            = true
 max_autoscale_instance_number = 4
@@ -194,6 +199,7 @@ instance_configuration_display_name = "My_Config_Name"
 
 autoscaling_config_display_name = "My_Autoscaling_Config_Name"
 is_autoscaling_enabled          = true
+autoscaling_cooldown            = 300
 
 autoscaling_is_cpu            = true
 max_autoscale_instance_number = 4
@@ -244,6 +250,7 @@ instance_configuration_display_name = "My_Config_Name"
 
 autoscaling_config_display_name = "My_Autoscaling_Config_Name"
 is_autoscaling_enabled          = true
+autoscaling_cooldown            = 300
 
 autoscaling_is_memory         = true
 max_autoscale_instance_number = 4
@@ -290,6 +297,7 @@ instance_configuration_display_name = "My_Config_Name"
 
 autoscaling_config_display_name = "My_Autoscaling_Config_Name"
 is_autoscaling_enabled          = true
+autoscaling_cooldown            = 300
 
 autoscaling_is_memory         = true
 max_autoscale_instance_number = 4
@@ -339,6 +347,7 @@ instance_configuration_display_name = "My_Config_Name"
 
 autoscaling_config_display_name = "My_Autoscaling_Config_Name"
 is_autoscaling_enabled          = true
+autoscaling_cooldown            = 300
 
 autoscaling_is_schedule           = true
 schedule_is_scalein_enabled       = true
@@ -381,6 +390,7 @@ instance_configuration_display_name = "My_Config_Name"
 
 autoscaling_config_display_name = "My_Autoscaling_Config_Name"
 is_autoscaling_enabled          = true
+autoscaling_cooldown            = 300
 
 autoscaling_is_schedule           = true
 schedule_is_scalein_enabled       = true
@@ -427,6 +437,7 @@ instance_configuration_display_name = "My_Config_Name"
 
 autoscaling_config_display_name = "My_Autoscaling_Config_Name"
 is_autoscaling_enabled          = true
+autoscaling_cooldown            = 300
 
 autoscaling_is_cpu            = true
 max_autoscale_instance_number = 4
@@ -470,6 +481,7 @@ instance_configuration_display_name = "My_Config_Name"
 
 autoscaling_config_display_name = "My_Autoscaling_Config_Name"
 is_autoscaling_enabled          = true
+autoscaling_cooldown            = 300
 
 autoscaling_is_cpu            = true
 max_autoscale_instance_number = 4
@@ -517,6 +529,7 @@ instance_configuration_display_name = "My_Config_Name"
 
 autoscaling_config_display_name = "My_Autoscaling_Config_Name"
 is_autoscaling_enabled          = true
+autoscaling_cooldown            = 300
 
 autoscaling_is_memory         = true
 max_autoscale_instance_number = 4
@@ -560,6 +573,7 @@ instance_configuration_display_name = "My_Config_Name"
 
 autoscaling_config_display_name = "My_Autoscaling_Config_Name"
 is_autoscaling_enabled          = true
+autoscaling_cooldown            = 301
 
 autoscaling_is_memory         = true
 max_autoscale_instance_number = 4
@@ -578,6 +592,7 @@ scalein_step                  = 1
 - Variable `pool_size` is only the initial size of the instance pool. Auto scaling can be defined to go beyond this number.
 - Variable `is_flex_shape` should be defined as true when required. The variables `instance_shape_config_ocpus` and `instance_shape_config_memory_in_gbs` should then also be defined. Do not use any of these variables at all when using a standard shape as they are not needed.
 - Variable `base_compute_image_ocid` should be the OCID of a custom image of the desired operating system generated from a dummy instance.
+- Variable `autoscaling_cooldown` sets the cooldown between autoscaling operations. It is in seconds, and 300 is the minimum as well as the default. 
 - Variable `is_autoscaling_enabled` determines whether the autoscaling configuartion is enabled or not, but it will still be provisioned as long as one of the below three auto scaling types is set to true.
 - Only one of the variables `autoscaling_is_schedule`, `autoscaling_is_cpu` or `autoscaling_is_memory` should be set to true. This determines which type of autoscaling is enabled, whether the pool is scaled on a schedule, by CPU utilization or memory utilization respectively. 
   - `autoscaling_is_schedule` makes use of variables:
@@ -595,7 +610,6 @@ scalein_step                  = 1
     - `scalein_step`: Number of instance to scale in by when `threshold_scale_in` is met
 
 ### Sample provider
-
 The following is the base provider definition to be used with this module
 
 ```shell
@@ -622,6 +636,7 @@ provider "oci" {
 }
 ```
 
+## Variable documentation
 ## Requirements
 
 No requirements.
@@ -659,6 +674,7 @@ No modules.
 |------|-------------|------|---------|:--------:|
 | <a name="input_assign_public_ip_flag"></a> [assign\_public\_ip\_flag](#input\_assign\_public\_ip\_flag) | Defines either machine will have or not a Public IP assigned. All Pvt networks this variable must be false | `bool` | `false` | no |
 | <a name="input_autoscaling_config_display_name"></a> [autoscaling\_config\_display\_name](#input\_autoscaling\_config\_display\_name) | Configuration name for Autoscaling | `any` | n/a | yes |
+| <a name="input_autoscaling_cooldown"></a> [autoscaling\_cooldown](#input\_autoscaling\_cooldown) | Sets the cooldown between autoscaling operations | `number` | `300` | no |
 | <a name="input_autoscaling_is_cpu"></a> [autoscaling\_is\_cpu](#input\_autoscaling\_is\_cpu) | Boolean that desribe if autoscaling is cpu based or not | `bool` | `false` | no |
 | <a name="input_autoscaling_is_memory"></a> [autoscaling\_is\_memory](#input\_autoscaling\_is\_memory) | Boolean that desribe if autoscaling is memory based or not | `bool` | `false` | no |
 | <a name="input_autoscaling_is_schedule"></a> [autoscaling\_is\_schedule](#input\_autoscaling\_is\_schedule) | Boolean that desribe if autoscaling is schedule based or not | `bool` | `false` | no |
