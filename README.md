@@ -13,7 +13,7 @@ The following is the reference architecture associated to this brick
 ### Prerequisites
 - Pre-baked Artifact and Network Compartments
 - Pre-baked VCN
-- Custom Image for OS already made
+- Pre-created base operative system, out of which a custom Image has been taken from
 
 ---
 
@@ -311,7 +311,7 @@ scalein_step                  = 1
 ########## FLEX, NO LBAAS, MEMORY ##########
 ```
 
-###################################################################### CUTOFF ######################################################################
+---
 
 If Flex Shape is not in use, LBaaS is attached and schedule auto scaling is used
 
@@ -588,7 +588,7 @@ scalein_step                  = 1
 ```
 
 ### Variable specific considerations
-- Variable `lbaas_bes_checkport` does not currently work with HTTPS/443.
+- Compute *ssh keys* to later log into instances, have to be associated with the custom image that's pre-requisite for creating instance pool. 
 - Variable `pool_size` is only the initial size of the instance pool. Auto scaling can be defined to go beyond this number.
 - Variable `is_flex_shape` should be defined as true when required. The variables `instance_shape_config_ocpus` and `instance_shape_config_memory_in_gbs` should then also be defined. Do not use any of these variables at all when using a standard shape as they are not needed.
 - Variable `base_compute_image_ocid` should be the OCID of a custom image of the desired operating system generated from a dummy instance.
@@ -609,6 +609,7 @@ scalein_step                  = 1
     - `scaleout_step`: Number of instance to scale out by when `threshold_scale_out` is met
     - `scalein_step`: Number of instance to scale in by when `threshold_scale_in` is met
 
+---
 ### Sample provider
 The following is the base provider definition to be used with this module
 
